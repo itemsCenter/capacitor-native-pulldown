@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { DropdownPlugin } from './definitions';
+import type { PulldownListPlugin } from './definitions';
 
-const Dropdown = registerPlugin<DropdownPlugin>('Dropdown', {
-  web: () => import('./web').then(m => new m.DropdownWeb()),
+const PulldownList = registerPlugin<PulldownListPlugin>('PulldownList', {
+  web: () => import('./web').then(m => new m.PulldownListWeb()),
 });
 
 export * from './definitions';
-export { Dropdown };
+export { PulldownList };
