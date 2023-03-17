@@ -4,7 +4,7 @@ export default {
     {
       file: 'dist/plugin.js',
       format: 'iife',
-      name: 'capacitorDropdown',
+      name: 'capacitorPulldown',
       globals: {
         '@capacitor/core': 'capacitorExports',
       },
