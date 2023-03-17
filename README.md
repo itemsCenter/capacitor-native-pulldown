@@ -22,28 +22,29 @@ import React, { useEffect } from 'react';
 import { PulldownList } from 'capacitor-native-pulldown';
 
 const App = () => {
+  
+  const onShow = async () => {
+    // this emits the coordinates to render your pulldown natively in ios
+    await PulldownList.show({ x: 50, y: 100 });
+  }
+
   useEffect(() => {
-    async function setupPulldownList() {
-      await PulldownList.setContent([
-        { id: 'voleume-off', title: 'Volume Off', icon: 'speaker.wave.2.fill' },
-        { id: 'add-to-favourites', title: 'Add to Favourites', icon: 'star.fill' }
-      ]);
+    await PulldownList.setContent([
+      { id: 'voleume-off', title: 'Volume Off', icon: 'speaker.wave.2.fill' },
+      { id: 'add-to-favourites', title: 'Add to Favourites', icon: 'star.fill' }
+    ]);
 
-      PulldownList.addListener('itemSelected', (item) => {
-        console.log(item)
-        // listen for changes on the dropdown
-      });
+    PulldownList.addListener('itemSelected', (item) => {
+      // listen for changes on the dropdown
+      console.log(item)
+    });
 
-      // this emits the coordinates to render your pulldown natively in ios
-      await PulldownList.show({ x: 50, y: 100 });
-    }
-
-    setupPulldownList();
-  }, []);
+    return () => console.log("forgot to implement removeListener(). will fix lol")
+  }, [])
 
   return (
-    <div>
-      <h1>Blablabla</h1>
+    <div onClick={onShow}>
+      <h1>Settings</h1>
     </div>
   );
 };
